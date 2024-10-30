@@ -32,8 +32,8 @@ while play_again == 'y':
             print(f"Guessed the letter \'{answer_char}\' at position {word_to_guess.find(answer_char)+1}!")
             print('\n\n\n\n\n')
         else:
-            print('Wrong guess, that\'s one life down...')
             lives -= 1
+            print(f"Wrong guess, you have {lives} lives left...")
             print('\n\n\n\n\n')
     
     if lives == 0:
