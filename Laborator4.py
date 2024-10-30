@@ -13,11 +13,14 @@ while play_again == 'y':
     while '_' in progress and lives > 0:
         print(f"Word: {' '.join(progress)}\n")
         answer_char = input('Guess a letter: ')
-    
-        if len(answer_char) > 1 and answer_char != word_to_guess:
+
+        if not answer_char.isalpha():
+            print('Not a valid answer!!!\nInput an alphabetic character!!!')
+            continue
+        elif len(answer_char) > 1 and answer_char != word_to_guess:
             print('Input a single letter!!!\n\n\n')
             continue
-        if len(answer_char) < 1:
+        elif len(answer_char) < 1:
             print('Answer is empty!!!\n\n\n')
             continue
         
