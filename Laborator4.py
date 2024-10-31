@@ -1,7 +1,7 @@
 import random as rng
 
 
-words = ['python']
+words = ['python', 'programare', 'calculator', 'date', 'algoritm']
 word_to_guess = rng.choice(words)
 progress = ['_' for _ in word_to_guess]
 lives = 6
@@ -18,10 +18,10 @@ while play_again == 'y':
             print('Not a valid answer!!!\nInput an alphabetic character!!!')
             continue
         elif len(answer_char) > 1 and answer_char != word_to_guess:
-            print('Input a single letter!!!\n\n\n')
+            print('Input a single letter!!!'+'\n'*3)
             continue
         elif len(answer_char) < 1:
-            print('Answer is empty!!!\n\n\n')
+            print('Answer is empty!!!'+'\n'*3)
             continue
         
         print()
@@ -33,11 +33,11 @@ while play_again == 'y':
             progress[word_to_guess.find(answer_char)] = answer_char
             print('Correct guess!')
             print(f"Guessed the letter \'{answer_char}\' at position {word_to_guess.find(answer_char)+1}!")
-            print('\n\n\n\n\n')
+            print('\n'*5)
         else:
             lives -= 1
             print(f"Wrong guess, you have {lives} lives left...")
-            print('\n\n\n\n\n')
+            print('\n'*5)
     
     if lives == 0:
         print('Game over!')
@@ -57,16 +57,16 @@ while play_again == 'y':
             lives = 6
             word_to_guess = rng.choice(words)
             progress = ['_' for _ in word_to_guess]
-            print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
+            print('\n'*40)
         elif play_again in ['n', 'no']:
             play_again = 'n'
         else:
             print('\nNot a valid answer!!!')
             print('The list of valid answers is right above, read it!\n\n\n')
 
-print('\n\n\n\n\n')
+print('\n'*5)
 print('     ___________________________     ')
 print('     |                         |     ')
 print('     |   Thanks for playing!   |     ')
 print('     |_________________________|     ')
-print('\n\n\n\n\n')
+print('\n'*5)
