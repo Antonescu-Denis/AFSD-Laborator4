@@ -1,11 +1,11 @@
 import random as rng
 
 
-words = ['python', 'programare', 'calculator', 'date', 'algoritm']
+words = ['calculator']
 word_to_guess = rng.choice(words)
 progress = ['_' for _ in word_to_guess]
 lives = 6
-used_letters = {}
+used_letters = set()
 answer_char = ''
 play_again = 'y'
 
@@ -25,15 +25,21 @@ while play_again == 'y':
             continue
         
         print()
-        if answer_char == word_to_guess:
+        if answer_char in used_letters:
+            print('You\'ve already tried this letter!!!')
+            print('\n'*5)
+        elif answer_char == word_to_guess:
             progress = [ch for ch in word_to_guess]
             print(f"\nWord: {' '.join(progress)}\n")
-            print('~~~~~ You guessed the whole word!!!!! ~~~~~')
+            print('~~~~~ You guessed the whole word in a single try!!!!! ~~~~~')
         elif answer_char in word_to_guess:
-            progress[word_to_guess.find(answer_char)] = answer_char
+            for i in range(0, len(word_to_guess)):
+                if answer_char == word_to_guess[i]:
+                    progress[i] = answer_char
             print('Correct guess!')
             print(f"Guessed the letter \'{answer_char}\' at position {word_to_guess.find(answer_char)+1}!")
             print('\n'*5)
+            used_letters.add(answer_char)
         else:
             lives -= 1
             print(f"Wrong guess, you have {lives} lives left...")
@@ -45,6 +51,7 @@ while play_again == 'y':
     else:
         print('Congratulations!!!')
         print('You won!!!')
+    print(f"The word was: {word_to_guess}")
     print('\n')
 
     play_again = ''
